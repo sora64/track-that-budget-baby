@@ -16,8 +16,9 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:3001/track-that-budget-baby", {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
   useFindAndModify: false
 });
 
